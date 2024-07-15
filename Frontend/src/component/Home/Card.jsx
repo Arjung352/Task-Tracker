@@ -1,15 +1,20 @@
+/* eslint-disable react/prop-types */
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import PropTypes from "prop-types";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Card = ({ add, adding, data }) => {
   const [tasks, setTasks] = useState(data);
+
+  useEffect(() => {
+    setTasks(data);
+  }, [data]);
+
   const headers = {
     id: localStorage.getItem("id"),
     authorization: `bearer ${localStorage.getItem("token")}`,
@@ -131,24 +136,6 @@ const Card = ({ add, adding, data }) => {
       <ToastContainer />
     </div>
   );
-};
-
-Card.propTypes = {
-  add: PropTypes.string,
-  adding: PropTypes.func,
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      title: PropTypes.string,
-      desc: PropTypes.string,
-      complete: PropTypes.bool,
-      important: PropTypes.bool,
-    })
-  ).isRequired,
-};
-
-Card.defaultProps = {
-  data: [],
 };
 
 export default Card;
