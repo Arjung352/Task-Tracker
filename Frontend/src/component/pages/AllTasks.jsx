@@ -6,7 +6,8 @@ import axios from "axios";
 
 function Alltasks() {
   const [add, adding] = useState("hidden");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
+
   const headers = {
     id: localStorage.getItem("id"),
     authorization: `bearer ${localStorage.getItem("token")}`,
@@ -23,18 +24,9 @@ function Alltasks() {
       console.error("Error fetching data:", error);
     }
   };
-
   useEffect(() => {
     fetchData();
-  }, []);
-
-  const reRender = () => {
-    fetchData();
-    console.log("rendering data");
-  };
-
-  console.log(data?.task);
-
+  });
   return (
     <>
       <div>
@@ -51,13 +43,9 @@ function Alltasks() {
             />
           </button>
         </div>
-        {data ? (
-          <Cards add="true" adding={adding} data={data.task} />
-        ) : (
-          <p>Loading tasks...</p>
-        )}
+        {data && <Cards add="true" adding={adding} data={data.task} />}
       </div>
-      <InputData add={add} adding={adding} reRender={reRender} />
+      <InputData add={add} adding={adding} />
     </>
   );
 }

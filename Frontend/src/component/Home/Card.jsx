@@ -10,7 +10,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Card = ({ add, adding, data }) => {
   const [tasks, setTasks] = useState(data);
-
   const headers = {
     id: localStorage.getItem("id"),
     authorization: `bearer ${localStorage.getItem("token")}`,

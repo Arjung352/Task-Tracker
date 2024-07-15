@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function InputData({ add, adding, reRender }) {
+function InputData({ add, adding }) {
   const [data, setData] = useState({ title: "", desc: "" });
 
   const change = (e) => {
@@ -18,24 +18,17 @@ function InputData({ add, adding, reRender }) {
   };
 
   const submit = async () => {
-    try {
-      if (data.title === "" || data.desc === "") {
-        toast.warn("All fields are required!");
-      } else {
-        await axios.post("http://localhost:1000/api/create-task", data, {
-          headers,
-        });
-        toast.success("Task added successfully");
-        reRender();
-        setData({ title: "", desc: "" });
-        adding("hidden");
-      }
-    } catch (error) {
-      toast.error("Error adding task");
-      console.error(error);
+    if (data.title === "" || data.desc === "") {
+      toast.warn("All fields are required!");
+    } else {
+      await axios.post("http://localhost:1000/api/create-task", data, {
+        headers,
+      });
+      toast.success("Task added successfully");
+      setData({ title: "", desc: "" });
+      adding("hidden");
     }
   };
-
   return (
     <div
       className={`${add} left-0 top-0 h-full w-full flex justify-center items-center`}
