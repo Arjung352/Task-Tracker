@@ -1,32 +1,34 @@
 import Cards from "../Home/Card";
 import AddIcon from "@mui/icons-material/Add";
 import InputData from "../Home/InputData";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 function Alltasks() {
   const [add, adding] = useState("hidden");
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
-  const headers = {
-    id: localStorage.getItem("id"),
-    authorization: `bearer ${localStorage.getItem("token")}`,
-  };
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
         "http://localhost:1000/api/get-all-task",
-        { headers }
+        {
+          headers: {
+            id: localStorage.getItem("id"),
+            authorization: `bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
       setData(response.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
+  }, []);
+
   useEffect(() => {
     fetchData();
-  });
+  }, [fetchData]);
+
   return (
     <>
       <div>
@@ -45,7 +47,7 @@ function Alltasks() {
         </div>
         {data && <Cards add="true" adding={adding} data={data.task} />}
       </div>
-      <InputData add={add} adding={adding} />
+      <InputData add={add} adding={adding} refetch={fetchData} />
     </>
   );
 }
