@@ -16,8 +16,8 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("connected to the database");
-    app.listen(1000, () => {
-      console.log("server listning at port 1000");
+    app.listen(process.env.Port, () => {
+      console.log(`server listning at port ${process.env.Port}`);
     });
   })
   .catch(() => {
