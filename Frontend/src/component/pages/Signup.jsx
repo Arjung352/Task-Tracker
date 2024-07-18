@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch, useSelector } from "react-redux";
-import { authAction } from "../store/auth";
+import { useSelector } from "react-redux";
 
 import axios from "axios";
 const useStyles = makeStyles({
@@ -37,7 +36,6 @@ const useStyles = makeStyles({
   },
 });
 function Signup() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   if (isLoggedIn === true) {
@@ -68,7 +66,7 @@ function Signup() {
         console.log(response);
         if (response.status === 200) {
           toast.success("Signup successful!");
-          dispatch(authAction.login({ username: data.username }));
+          localStorage.setItem("username", data.username);
           navigate("/login");
         } else {
           toast.error("Signup failed!");

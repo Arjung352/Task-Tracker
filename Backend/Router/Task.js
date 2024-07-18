@@ -82,7 +82,7 @@ router.put("/update-complete-task/:id", authenticateToken, async (req, res) => {
   }
 });
 // fetching only important task
-router.put("/get-imp-task", authenticateToken, async (req, res) => {
+router.get("/get-imp-task", authenticateToken, async (req, res) => {
   try {
     const { id } = req.headers;
     const data = await User.findById(id).populate({

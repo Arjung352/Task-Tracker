@@ -7,6 +7,11 @@ import axios from "axios";
 function Alltasks() {
   const [add, adding] = useState("hidden");
   const [data, setData] = useState(null);
+  const [updatedData, setUpdatedData] = useState({
+    id: "",
+    title: "",
+    desc: "",
+  });
 
   const fetchData = useCallback(async () => {
     try {
@@ -33,21 +38,29 @@ function Alltasks() {
     <>
       <div>
         <div className="flex justify-end mb-4">
-          <button
-            title="Add New Task"
-            onClick={() => {
-              adding("fixed");
-            }}
-          >
+          <button title="Add New Task" onClick={() => adding("fixed")}>
             <AddIcon
               fontSize="large"
               className="hover:text-gray-500 transition-all ease-in-out duration-300"
             />
           </button>
         </div>
-        {data && <Cards add="true" adding={adding} data={data.task} />}
+        {data && (
+          <Cards
+            add="true"
+            adding={adding}
+            data={data.task}
+            setUpdatedData={setUpdatedData}
+          />
+        )}
       </div>
-      <InputData add={add} adding={adding} refetch={fetchData} />
+      <InputData
+        add={add}
+        adding={adding}
+        refetch={fetchData}
+        updatedData={updatedData}
+        setUpdatedData={setUpdatedData}
+      />
     </>
   );
 }

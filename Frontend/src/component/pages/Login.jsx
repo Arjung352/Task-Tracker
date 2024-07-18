@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -40,7 +40,6 @@ const useStyles = makeStyles({
 function Login() {
   const classes = useStyles();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const home = useNavigate();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
@@ -64,13 +63,12 @@ function Login() {
           "http://localhost:1000/api/login",
           data
         );
-        setData({ username: "", password: "" });
-        localStorage.setItem("id", response.data.id);
-        localStorage.setItem("token", response.data.token);
-        dispatch(authAction.login({ username: data.username }));
-
-        home("/");
         if (response.status === 200) {
+          localStorage.setItem("id", response.data.id);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("username", data.username);
+          setData({ username: "", password: "" });
+          home("/");
           toast.success("login successful!");
         } else {
           toast.error("login failed!");

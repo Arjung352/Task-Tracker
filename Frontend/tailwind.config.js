@@ -10,6 +10,9 @@ export default {
         newRed: "#dc3545",
         NewColor: "#7f8c8d",
       },
+      fontFamily: {
+        Rubik: ["Rubix", "sans-serif"],
+      },
     },
   },
   plugins: [],
