@@ -37,9 +37,13 @@ function InputData({
       toast.warn("All fields are required!");
     } else {
       try {
-        await axios.post("http://localhost:1000/api/create-task", data, {
-          headers,
-        });
+        await axios.post(
+          "https://https://task-tracker-ag.vercel.app/api/create-task",
+          data,
+          {
+            headers,
+          }
+        );
         toast.success("Task added successfully");
         setData({ title: "", desc: "" });
         adding("hidden");
@@ -57,7 +61,7 @@ function InputData({
     } else {
       try {
         await axios.put(
-          `http://localhost:1000/api/update-task/${updatedData.id}`,
+          `https://https://task-tracker-ag.vercel.app/api/update-task/${updatedData.id}`,
           data,
           { headers }
         );

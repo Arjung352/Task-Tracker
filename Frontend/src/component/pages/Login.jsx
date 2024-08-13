@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { authAction } from "../store/auth";
 
 const useStyles = makeStyles({
   root: {
@@ -60,7 +59,7 @@ function Login() {
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:1000/api/login",
+          "https://https://task-tracker-ag.vercel.app/api/login",
           data
         );
         if (response.status === 200) {

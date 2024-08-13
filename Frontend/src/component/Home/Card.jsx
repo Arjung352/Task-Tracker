@@ -22,7 +22,7 @@ const Card = ({ add, adding, data, setUpdatedData }) => {
   const changeComplete = async (id) => {
     try {
       await axios.put(
-        `http://localhost:1000/api/update-complete-task/${id}`,
+        `https://https://task-tracker-ag.vercel.app/api/update-complete-task/${id}`,
         {},
         { headers }
       );
@@ -41,7 +41,7 @@ const Card = ({ add, adding, data, setUpdatedData }) => {
   const changeFavourite = async (id) => {
     try {
       await axios.put(
-        `http://localhost:1000/api/update-imp-task/${id}`,
+        `https://https://task-tracker-ag.vercel.app/api/update-imp-task/${id}`,
         {},
         { headers }
       );
@@ -59,9 +59,12 @@ const Card = ({ add, adding, data, setUpdatedData }) => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:1000/api/delete-task/${id}`, {
-        headers,
-      });
+      await axios.delete(
+        `https://https://task-tracker-ag.vercel.app/api/delete-task/${id}`,
+        {
+          headers,
+        }
+      );
       setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
       toast.success("Task deleted successfully");
     } catch (error) {

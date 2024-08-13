@@ -60,7 +60,7 @@ function Signup() {
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:1000/api/signup",
+          "https://https://task-tracker-ag.vercel.app/api/signup",
           data
         );
         console.log(response);
