@@ -22,7 +22,7 @@ const Card = ({ add, adding, data, setUpdatedData }) => {
   const changeComplete = async (id) => {
     try {
       await axios.put(
-        `https://https://task-tracker-ag.vercel.app/api/update-complete-task/${id}`,
+        `https://task-tracker-ipz8.onrender.com/api/update-complete-task/${id}`,
         {},
         { headers }
       );
@@ -41,7 +41,7 @@ const Card = ({ add, adding, data, setUpdatedData }) => {
   const changeFavourite = async (id) => {
     try {
       await axios.put(
-        `https://https://task-tracker-ag.vercel.app/api/update-imp-task/${id}`,
+        `https://task-tracker-ipz8.onrender.com/api/update-imp-task/${id}`,
         {},
         { headers }
       );
@@ -60,7 +60,7 @@ const Card = ({ add, adding, data, setUpdatedData }) => {
   const deleteTask = async (id) => {
     try {
       await axios.delete(
-        `https://https://task-tracker-ag.vercel.app/api/delete-task/${id}`,
+        `https://task-tracker-ipz8.onrender.com/api/delete-task/${id}`,
         {
           headers,
         }

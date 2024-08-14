@@ -8,7 +8,7 @@ function CompleteTask() {
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
-        "https://https://task-tracker-ag.vercel.app/api/get-complete-task",
+        "https://task-tracker-ipz8.onrender.com/api/get-complete-task",
         {
           headers: {
             id: localStorage.getItem("id"),

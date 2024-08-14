@@ -9,7 +9,7 @@ function ImportantTask() {
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
-        "https://https://task-tracker-ag.vercel.app/api/get-imp-task",
+        "https://task-tracker-ipz8.onrender.com/api/get-imp-task",
         {
           headers: {
             id: localStorage.getItem("id"),

@@ -60,7 +60,7 @@ function Signup() {
     } else {
       try {
         const response = await axios.post(
-          "https://https://task-tracker-ag.vercel.app/api/signup",
+          "https://task-tracker-ipz8.onrender.com/api/signup",
           data
         );
         console.log(response);

@@ -38,7 +38,7 @@ function InputData({
     } else {
       try {
         await axios.post(
-          "https://https://task-tracker-ag.vercel.app/api/create-task",
+          "https://task-tracker-ipz8.onrender.com/api/create-task",
           data,
           {
             headers,
@@ -61,7 +61,7 @@ function InputData({
     } else {
       try {
         await axios.put(
-          `https://https://task-tracker-ag.vercel.app/api/update-task/${updatedData.id}`,
+          `https://task-tracker-ipz8.onrender.com/api/update-task/${updatedData.id}`,
           data,
           { headers }
         );
