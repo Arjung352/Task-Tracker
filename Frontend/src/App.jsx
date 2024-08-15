@@ -22,7 +22,7 @@ const App = () => {
     }
   }, []);
   return (
-    <div className=" h-svh w-screen p-4 relative">
+    <div className="overflow-y-hidden h-svh fixed top-0 left-0 w-screen p-4 ">
       <Routes>
         <Route path="/" element=<Home />>
           <Route index element=<AllTasks /> />
