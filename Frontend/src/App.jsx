@@ -22,7 +22,7 @@ const App = () => {
     }
   }, []);
   return (
-    <div className="min-h-svh max-h-svh h-svh relative w-screen p-4 ">
+    <div className="min-h-svh max-h-svh  relative w-screen p-4 ">
       <Routes>
         <Route path="/" element=<Home />>
           <Route index element=<AllTasks /> />
