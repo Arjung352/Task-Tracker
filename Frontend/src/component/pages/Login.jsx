@@ -83,7 +83,7 @@ function Login() {
   };
 
   return (
-    <div className="w-full flex justify-center items-center h-full">
+    <div className="w-full flex justify-center items-center h-svh overflow-hidden">
       <div className="gap-3 font-bold text-2xl text-olive flex flex-col  p-6 rounded-md border border-white shadow-lg shadow-white">
         <h2>Log-in to Task Tracker</h2>
         <h3 className="text-sm">Log in to get to work and manage your work.</h3>
